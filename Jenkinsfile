@@ -5,7 +5,7 @@ pipeline {
         DOTNET_SCANNER_HOME= tool 'sonar_scanner_dotnet'
         SONARQUBE_SERVER = 'Test_Sonar'
         SONARQUBE_CREDENTIALS_ID = 'sonarqube'
-        PROJECT_KEY = 'TestApplication'
+        PROJECT_KEY = 'sonar-surender'
         VSTEST_CONSOLE_HOME = tool 'vstest.console'
     }
     options {
@@ -57,8 +57,8 @@ pipeline {
             steps {
                script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub2') {
-                        def dockerImage = docker.build("surender3010/surentestapp:1.0")
-                        dockerImage.push("1.0")
+                        def dockerImage = docker.build("surender3010/i-surender-${BRANCH_NAME}:latest")
+                        dockerImage.push("latest")
                     }
                 }
             }
