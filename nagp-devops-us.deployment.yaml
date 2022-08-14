@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nagp-devops-us-deployment
+  labels:
+    app: nagp-devops-us-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nagp-devops-us-pod
+  template:
+    metadata:
+      labels:
+        app: nagp-devops-us-pod
+    spec:
+      containers:
+        - name: nagp-devops-us-containe
+          image: surnder3010/surentestapp:1.0
+          ports:
+            - containerPort: 80
