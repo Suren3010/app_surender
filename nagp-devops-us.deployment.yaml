@@ -15,7 +15,7 @@ spec:
         app: nagp-devops-us-pod
     spec:
       containers:
-        - name: nagp-devops-us-containe
-          image: surnder3010/surentestapp:1.0
+        - name: nagp-devops-us-container
+          image: surender3010/i-surender-master:latest
           ports:
             - containerPort: 80

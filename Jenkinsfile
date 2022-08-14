@@ -34,6 +34,7 @@ pipeline {
         stage("Code build") {
             steps {
                 bat "\"${MSBUILD_HOME}\\MSBuild.exe\" nagp-devops-us.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
+                dotnetPublish configuration: 'Release', project: 'nagp-devops-us/nagp-devops-us.csproj', sdk: 'dotnet-sdk', selfContained: false
             }
         }
         stage("Test case execution") {
