@@ -3,7 +3,7 @@
 ##### sdk base image and also no need to build code again in image
 FROM mcr.microsoft.com/dotnet/aspnet:3.1
 WORKDIR /nagp-devops-us
-COPY /nagp-devops-us/bin/Release/netcoreapp3.1/publish/* .
+COPY nagp-devops-us/bin/Release/netcoreapp3.1/publish/* .
 ENTRYPOINT ["dotnet", "nagp-devops-us.dll"]
 
 
