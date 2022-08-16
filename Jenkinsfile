@@ -66,7 +66,11 @@ pipeline {
         }
         stage("Kubernetes deployment") {
            steps {
-               echo "Kubernetes deployment"
+               script {
+                    echo 'Login to GCP'
+                    powershell 'gcloud container clusters get-credentials autopilot-cluster-1 --region asia-south2 --project nagp-devops-357918'
+                    powershell 'kubectl apply -f nagp-devops-us.deployment.yaml'
+               }
            }
         }
     }

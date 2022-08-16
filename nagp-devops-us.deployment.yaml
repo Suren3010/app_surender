@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nagp-devops-us-app
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: nagp-devops-us-pod
@@ -19,3 +19,16 @@ spec:
           image: surender3010/i-surender-master:latest
           ports:
             - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nagp-devops-us-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: nagp-devops-us-pod
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 80
