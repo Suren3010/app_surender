@@ -67,9 +67,10 @@ pipeline {
         stage("Kubernetes deployment") {
            steps {
                script {
-                    echo 'Login to GCP'
-                    powershell 'gcloud container clusters get-credentials autopilot-cluster-1 --region asia-south2 --project nagp-devops-357918'
-                    powershell 'kubectl apply -f nagp-devops-us.deployment.yaml'
+                    withCredentials([file(credentialsId: 'GCP_CRED', variable: 'FILE')]) {
+                        bat returnStdout: true, script: "gcloud auth activate-service-account --key-file ${FILE}"
+                        bat returnStdout: true, script: "kubectl apply -f nagp-devops-us.deployment.yaml"
+                   }
                }
            }
         }
