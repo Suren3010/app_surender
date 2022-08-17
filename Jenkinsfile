@@ -70,9 +70,9 @@ pipeline {
                     withCredentials([file(credentialsId: 'GCP_CRED', variable: 'FILE')]) {
                         bat returnStdout: true, script: "gcloud auth activate-service-account --key-file ${FILE}"
                         bat returnStdout: true, script: "kubectl apply -f nagp-devops-us.deployment.yaml"
-                   }
-               }
-           }
-        }
-    }
-}
+                    }
+                }
+            }
+         }
+     }
+ }
