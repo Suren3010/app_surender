@@ -7,6 +7,7 @@ pipeline {
         SONARQUBE_CREDENTIALS_ID = 'sonarqube'
         PROJECT_KEY = 'sonar-surender'
         VSTEST_CONSOLE_HOME = tool 'vstest.console'
+        BUILD_AND_PUBLISH_DOCKER_IMAGE = 'false'
     }
     options {
         timeout(time: 1, unit: 'HOURS') 
@@ -55,6 +56,9 @@ pipeline {
             }
         }
         stage("Build and push docker image") {
+            when {
+                environment name: 'BUILD_AND_PUBLISH_DOCKER_IMAGE', value: 'true'
+            }
             steps {
                script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub2') {
