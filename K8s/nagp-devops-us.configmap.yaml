@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap 
+metadata:
+  name: nagp-devops-us-configmap
+  namespace: kubernetes-cluster-surender
+data:
+  database: mongodb_From_ConfigMap
+  database_server: mongodb_Server_From_ConfigMap

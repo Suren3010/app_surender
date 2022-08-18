@@ -4,5 +4,12 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+    <h4>Settings from K8s configMap</h4>
+    <pre style="tab-size:4">Database name from ConfigMap is <b>@Environment.GetEnvironmentVariable("DATABASE_FROMCONFIGMAP")</b></pre>
+    <pre style="tab-size:4">Database server name from ConfigMap is <b>@Environment.GetEnvironmentVariable("DATABASE_SERVER_FROMCONFIGMAP")</b></pre>
+
+    <h4>Settings from K8s secrets</h4>
+    <pre style="tab-size:4">Database user name from K8s secret is <b>@Environment.GetEnvironmentVariable("DATABASE_USERNAME_FROM_SECRET")</b></pre>
+    <pre style="tab-size:4">Database password from K8s secret is <b>@Environment.GetEnvironmentVariable("DATABASE_PASSWORD_FROM_SECRET")</b></pre>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

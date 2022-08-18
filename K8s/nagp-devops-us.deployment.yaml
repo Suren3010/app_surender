@@ -20,3 +20,26 @@ spec:
           image: surender3010/i-surender-master:latest
           ports:
             - containerPort: 80
+          env:
+            - name: DATABASE_FROMCONFIGMAP
+              valueFrom:
+                configMapKeyRef:
+                  name: nagp-devops-us-configmap
+                  key: database
+            - name: DATABASE_SERVER_FROMCONFIGMAP
+              valueFrom:
+                configMapKeyRef:
+                  name: nagp-devops-us-configmap
+                  key: database_server
+            - name: DATABASE_USERNAME_FROM_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nagp-devops-us-secret
+                  key: username
+                  optional: false
+              - name: DATABASE_PASSWORD_FROM_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nagp-devops-us-secret
+                  key: password
+                  optional: true
