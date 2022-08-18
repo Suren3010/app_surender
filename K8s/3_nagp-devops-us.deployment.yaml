@@ -36,8 +36,10 @@ spec:
                 secretKeyRef:
                   name: nagp-devops-us-secret
                   key: username
-              - name: DATABASE_PASSWORD_FROM_SECRET
+                  optional: false
+            - name: DATABASE_PASSWORD_FROM_SECRET
               valueFrom:
                 secretKeyRef:
                   name: nagp-devops-us-secret
                   key: password
+                  optional: true
