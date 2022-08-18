@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nagp-devops-us-service
-	namespace: kubernetes-cluster-surender
+  namespace: kubernetes-cluster-surender
 spec:
   type: LoadBalancer
   selector:
