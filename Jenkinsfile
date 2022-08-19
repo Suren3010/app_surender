@@ -13,11 +13,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') 
     }
     stages {
-        #stage("Checkout code from version control") {
-        #    steps {
-        #        checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Suren3010/app_surender.git']]]
-        #    }
-        #}
+        
         stage("Nuget restore") {
             steps {
                 bat "\"${MSBUILD_HOME}\\MSBuild.exe\" nagp-devops-us.sln -t:restore"
