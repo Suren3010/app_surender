@@ -5,19 +5,19 @@ pipeline {
         DOTNET_SCANNER_HOME= tool 'sonar_scanner_dotnet'
         SONARQUBE_SERVER = 'Test_Sonar'
         SONARQUBE_CREDENTIALS_ID = 'sonarqube'
-        PROJECT_KEY = 'sonar-surender'
-        VSTEST_CONSOLE_HOME = tool 'vstest.console'
-        BUILD_AND_PUBLISH_DOCKER_IMAGE = 'false'
+        PROJECT_KEY= 'sonar-surender'
+        VSTEST_CONSOLE_HOME= tool 'vstest.console'
+        BUILD_AND_PUBLISH_DOCKER_IMAGE= 'false'
     }
     options {
         timeout(time: 1, unit: 'HOURS') 
     }
     stages {
-        stage("Checkout code from version control") {
-            steps {
-                checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Suren3010/app_surender.git']]]
-            }
-        }
+        #stage("Checkout code from version control") {
+        #    steps {
+        #        checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Suren3010/app_surender.git']]]
+        #    }
+        #}
         stage("Nuget restore") {
             steps {
                 bat "\"${MSBUILD_HOME}\\MSBuild.exe\" nagp-devops-us.sln -t:restore"
