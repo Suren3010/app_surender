@@ -37,6 +37,14 @@ pipeline {
                 dotnetPublish configuration: 'Release', project: 'nagp-devops-us/nagp-devops-us.csproj', sdk: 'dotnet-sdk', selfContained: false
             }
         }
+        stage("Release artifact") {
+            when {
+                branch 'develop'
+            }
+            steps {
+                dotnetPublish configuration: 'Release', project: 'nagp-devops-us/nagp-devops-us.csproj', sdk: 'dotnet-sdk', selfContained: false
+            }
+        }
         stage("Test case execution") {
             when {
                 branch 'master'
