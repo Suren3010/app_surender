@@ -51,6 +51,7 @@ pipeline {
                   }
             }
         }
+        //** By default this step get ignored but we can change env variable to 'true' if want to push latest image
         stage("Build and push docker image") {
             when {
                 environment name: 'BUILD_AND_PUBLISH_DOCKER_IMAGE', value: 'true'
