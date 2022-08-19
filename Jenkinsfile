@@ -20,6 +20,9 @@ pipeline {
             }
         }
         stage("Start sonarqube analysis") {
+            when {
+                branch 'master'
+            }
             steps {
                 withSonarQubeEnv("${SONARQUBE_SERVER}") {
                     withCredentials([string(credentialsId: "${SONARQUBE_CREDENTIALS_ID}", variable: "sonar_token")]) {
@@ -43,6 +46,9 @@ pipeline {
             }
         }
         stage("Stop sonarqube analysis") {
+            when {
+                branch 'master'
+            }
             steps {
                   withSonarQubeEnv("${SONARQUBE_SERVER}") {
                     withCredentials([string(credentialsId: "${SONARQUBE_CREDENTIALS_ID}", variable: "sonar_token")]) {
